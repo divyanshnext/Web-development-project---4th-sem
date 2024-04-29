@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Range</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: linear-gradient(to right, #ffffff, #f2f2f2);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            max-width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="rankForm" action="http://localhost:4004/api/user/rankRange" method="post">
+        <label for="startRank">Starting Rank</label>
+        <input id="startRank" name="startRank" type="number" placeholder="Enter starting rank">
+
+        <label for="endRank">Ending Rank</label>
+        <input id="endRank" name="endRank" type="number" placeholder="Enter ending rank">
+
+        <button type="submit" onclick="uploadFile()"><i class="fas fa-paper-plane"></i> Submit</button>
+    </form>
+
+    <div class="result" id="result" style="display: none;">
+        <h2>Users between given ranks are:</h2>
+        <div id="userList"></div>
+    </div>
+
+    <script>
+        document.getElementById('rankRange').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const startRank = formData.get('startRank');
+            const endRank = formData.get('endRank');
+            
+            const response = await fetch(form.getAttribute('action'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ startRank, endRank })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                displayResult(data);
+            } else {
+                console.error('Error:', response.statusText);
+            }
+        });
+
+        function displayResult(data) {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+            data.user.forEach(user => {
+                const userDiv = document.createElement('div');
+                userDiv.innerHTML = `
+                    <p>Name: ${user.name}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Technical Skills: ${user.technicalSkills}</p>
+                    <p>Score: ${user.score}</p>
+                    <hr>
+                `;
+                userList.appendChild(userDiv);
+            });
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

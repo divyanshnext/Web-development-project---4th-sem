@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Bob Johnson",
+    "email": "bob@example.com",
+    "technicalSkills": "Java, Spring",
+    "score": 92
+  },
+  {
+    "name": "Emma Brown",
+    "email": "emma@example.com",
+    "technicalSkills": "React, JavaScript",
+    "score": 88
+  },
+  {
+    "name": "Sandarbh Bajpai",
+    "email": "bajpaisandarbh@gmail.com",
+    "technicalSkills": "HTML CSS Javascript Node js Python C/C++ Java Object Oriented Programming Competitive Programming SQL DBMS Operating Systems Teamwork Team Leadership Multitasking Fast Learner Critical thinking and problem solving Attention to detail",
+    "score": 50
+  },
+  {
+    "name": "Hemant Singh",
+    "email": "hemantsingh09103@gmail.com",
+    "technicalSkills": "JavaScript, Python, C, C++, java,Windows XP/Vista/7/8/10/11,Linux,Backend (node.js, express.js, building API), Docker, Cloud Services (Azure AI essentials), Deployment,Frontend (React), Database (PostgreSql), Git (GitHub), GitHub-Project-Management",
+    "score": 75
+  },
+  {
+    "name": "Xyz",
+    "email": "xyz@gmail.com",
+    "technicalSkills": "React JS, Node JS, Git, GitHub, Ubuntu",
+    "score": 100
+  },
+  {
+    "name": "Divyansh Kumar Chaturvedi",
+    "email": "divyanshkumar@lpu.in",
+    "technicalSkills": "Cascading Style Sheets (CSS), HTML5, JavaScript, C++, Object-Oriented Programming (OOP), Figma, Microsoft Office, Canva, Team Management, Project Management",
+    "score": 60
+  },
+  {
+    "name": "DIVYANSH KUMAR CHATURVEDI",
+    "email": "nextdivyansh@gmail.com",
+    "technicalSkills": "Data Science, Graphic Design, Database Administration, Problem Solving, Programming, Marketing, Data Analytics, Communications",
+    "score": 85
+  },
+  {
+    "name": "PRINCE RAJ",
+    "email": "princeraj4539@gmail.com",
+    "technicalSkills": "React JS, Node JS, Git, GitHub, Ubuntu, Data Structures and Algorithms, Problem-Solving, Responsive Web Design, Scripting in JavaScript",
+    "score": 75
+  },
+  {
+    "name": "ANIKET NARAYAN GUPTA",
+    "email": "gupta.ji9123@gmail.com",
+    "technicalSkills": "React JS, Node JS, Express JS, Mongo DB, Ubuntu",
+    "score": 70
+  },
+  {
+    "name": "ABHINAV ADITYA",
+    "email": "abhinavaditya164@gmail.com",
+    "technicalSkills": "C++, Javascript, Java, React.js, Node.js, Express.js, HTML5, CSS, SCSS, SQL, MongoDB, Git, Github, React Query, Figma, Canva",
+    "score": 50
+  },
+  {
+    "name": "Ujjawal Raj",
+    "email": "mr.ujjawalraj@gmail.com",
+    "technicalSkills": "C++, Java, Python, HTML/CSS, JavaScript, Numpy, Pandas, VScode, Git /Github, SQL/MySQL",
+    "score": 60
+  },
+  {
+    "name": "CHARLES MCTURLAND",
+    "email": "cmcturland@email.com",
+    "technicalSkills": "Python (Django), Javascript (NodeJS, ReactJS, jQuery), SQL (MySQL, PostgreSQL, NoSQL), HTML5/CSS, AWS, Unix, Git",
+    "score": 80
+  },
+  {
+    "name": "Kriti Jaiswal",
+    "email": "kritijaiswal2901@yahoo.com",
+    "technicalSkills": "Node.js, JavaScript",
+    "score": 60
+  }
+]

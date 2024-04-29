@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload File</h2>
+        <input type="file" id="fileInput" />
+        <button onclick="uploadFile()">Upload</button>
+        <div id="message" class="message"></div>
+        <div id="content"></div>
+    </div>
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                showMessage("Please select a file.", 'error');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('doc', file);
+
+            fetch('http://localhost:4004/api/upload/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to upload file.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.content) {
+                    document.getElementById('content').textContent = data.content;
+                    showMessage("File uploaded successfully.", 'success');
+                } else {
+                    throw new Error('No content found in the response.');
+                }
+            })
+            .catch(error => {
+                showMessage("Error: " + error.message, 'error');
+            });
+        }
+
+        function showMessage(message, type) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = message;
+            messageElement.className = 'message ' + type;
+        }
+    </script>
+</body>
+</html>
